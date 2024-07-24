@@ -1,20 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function WriteBlog() {
   const [data, setData] = useState({ title: "", content: "" });
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://127.0.0.1:8000/blog/post", data)
-      .then((response) => {
-        console.log(response);
-        console.log(response.data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.post("http://127.0.0.1:8000/blog/post", data).catch((error) => {
+      console.log(error);
+    });
+    navigate("/");
   };
 
   const handleTitleChange = (e) => {
