@@ -46,7 +46,7 @@ export default function WriteBlog() {
             placeholder="Write your text here..."
             value={data.content}
             onChange={handleContentChange}
-            rows={20}
+            rows={15}
             className="post-content"
           ></textarea>
           <input type="submit" value="Post" id="post" />
