@@ -37,11 +37,9 @@ img {
   gap: 2em;
   margin-bottom: 4em;
   cursor: pointer;
-  box-shadow: 1.6px 0.5px 1.2px rgba(0, 0, 0, 0.008),
-    3.9px 1.3px 2.9px rgba(0, 0, 0, 0.012),
-    7.3px 2.4px 5.5px rgba(0, 0, 0, 0.015),
-    13px 4.2px 9.8px rgba(0, 0, 0, 0.018),
-    24.2px 7.9px 18.4px rgba(0, 0, 0, 0.022), 58px 19px 44px rgba(0, 0, 0, 0.03);
+  box-shadow: 0px 1px 1px rgba(3, 7, 18, 0.01), 0px 5px 4px rgba(3, 7, 18, 0.02),
+    0px 12px 9px rgba(3, 7, 18, 0.02), 0px 20px 15px rgba(3, 7, 18, 0.03),
+    0px 32px 24px rgba(3, 7, 18, 0.04);
   padding: 0.5em;
 }
 
