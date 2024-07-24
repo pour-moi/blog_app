@@ -7,6 +7,7 @@ body {
   src: url("../assets/GT-Walsheim-Regular-Trial-BF651b7fc71a47d.otf");
 }
 
+/* Home.jsx style */
 .header {
   display: flex;
   justify-content: space-around;
@@ -36,4 +37,43 @@ img {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+/* Post.jsx styles */
+
+.post-title,
+.post-content {
+  border: none;
+  width: 55vw;
+  margin: auto;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  font-family: "GT Walesheim";
+  display: flex;
+  justify-content: center;
+}
+
+#post {
+  display: none;
+}
+
+.post-title,
+.post-content:focus {
+  outline: none;
+}
+
+.head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 22em;
+  margin-bottom: 2em;
+}
+
+.post-button {
+  background-color: green;
+  border: none;
+  padding: 0.5em;
+  width: 4em;
+  color: white;
+  border-radius: 2em;
 }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
+
 export default function WriteBlog() {
   const [data, setData] = useState({ title: "", content: "" });
   const navigate = useNavigate();
@@ -22,23 +24,34 @@ export default function WriteBlog() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="blog_title"
-          placeholder="Title"
-          value={data.title}
-          onChange={handleTitleChange}
-        />
-        <textarea
-          name="blog_content"
-          id=""
-          placeholder="Write your text here..."
-          value={data.content}
-          onChange={handleContentChange}
-        ></textarea>
-        <input type="submit" value="Post" />
-      </form>
+      <div className="head">
+        <h1>Blog</h1>
+        <button className="post-button">
+          <label htmlFor="post">Post</label>
+        </button>
+      </div>
+      <div className="post-blog">
+        <form onSubmit={handleSubmit} autoComplete="off">
+          <input
+            type="text"
+            name="blog_title"
+            placeholder="Title"
+            value={data.title}
+            onChange={handleTitleChange}
+            className="post-title"
+          />
+          <textarea
+            name="blog_content"
+            id=""
+            placeholder="Write your text here..."
+            value={data.content}
+            onChange={handleContentChange}
+            rows={20}
+            className="post-content"
+          ></textarea>
+          <input type="submit" value="Post" id="post" />
+        </form>
+      </div>
     </>
   );
 }
