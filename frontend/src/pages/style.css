@@ -69,7 +69,8 @@ img {
   margin-bottom: 2em;
 }
 
-.post-button {
+.post-button,
+.write-blog {
   background-color: green;
   border: none;
   padding: 0.5em;

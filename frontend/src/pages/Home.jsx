@@ -22,7 +22,7 @@ export function Home() {
       <div className="header">
         <h1>Blog</h1>
         <Link to="post">
-          <button>Write</button>
+          <button className="write-blog">Write</button>
         </Link>
       </div>
       <div className="blog-container">
