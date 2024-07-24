@@ -30,4 +30,12 @@ def read_blog(request, id):
 @api_view(['POST'])
 def add(request):
     if request.method == 'POST':
-        pass
+       data = request.data
+
+       title = data['title']
+       content = data['content']
+
+       new_blog = Blog(title=title, content=content)
+       new_blog.save()
+       
+       return Response({'message': "Hello"})
