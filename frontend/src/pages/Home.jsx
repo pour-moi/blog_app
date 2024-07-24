@@ -19,13 +19,18 @@ export function Home() {
 
   return (
     <>
-      <h1>Blog</h1>
+      <div className="header">
+        <h1>Blog</h1>
+        <Link to="post">
+          <button>Write</button>
+        </Link>
+      </div>
       <div className="blog-container">
         {blogs.map((blog, index) => {
           return (
             <Link
               key={blog.id}
-              to={"blogs"}
+              to={"blog"}
               state={{ id: blog.id }}
               className="link"
             >

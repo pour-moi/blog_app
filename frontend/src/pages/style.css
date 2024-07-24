@@ -7,6 +7,13 @@ body {
   src: url("../assets/GT-Walsheim-Regular-Trial-BF651b7fc71a47d.otf");
 }
 
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 40em;
+}
+
 img {
   height: 11em;
   width: 24em;
