@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 from .models import Blog
 
 # Create your views here.
@@ -39,3 +41,35 @@ def add(request):
        new_blog.save()
        
        return Response({'message': "Posted"})
+
+@api_view(['POST'])
+def login(request):
+    if request.method == 'POST':
+        user_data = request.data
+        user_name = user_data["username"]
+        user_password = user_data["password"]
+        print(dict(request.data))
+        print(user_name, user_password)
+
+        user = authenticate(username=user_name, password=user_password)
+
+        if user is not None:
+            return Response({'is_authenticated': True})
+            print("Authenticated")
+        else:
+            print("Invalid Credentials")
+
+
+        return Response({'message': 'Post requested'})
+
+@api_view(['POST'])
+def register(request):
+    if request.method == 'POST':
+        user_data = request.data
+        username = user_data['username']
+        password = user_data['password']
+        
+        new_user = User.objects.create_user(username=username, password=password)
+        new_user.save()
+
+        return Response({'message': 'User Created'})
