@@ -38,4 +38,4 @@ def add(request):
        new_blog = Blog(title=title, content=content)
        new_blog.save()
        
-       return Response({'message': "Hello"})
+       return Response({'message': "Posted"})
