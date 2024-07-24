@@ -78,3 +78,9 @@ img {
   color: white;
   border-radius: 2em;
 }
+
+/* Blog.jsx styles */
+.blog_to_read {
+  width: 50em;
+  margin: auto;
+}
