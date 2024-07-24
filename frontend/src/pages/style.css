@@ -15,16 +15,23 @@ body {
   gap: 40em;
 }
 
-img {
-  height: 11em;
+.main-blog-title {
   width: 24em;
+  border: 1px red solid;
+}
+
+img {
+  height: 8em;
+  width: 16em;
   background-color: navajowhite;
 }
 
 .blog {
   /* border: 1px red solid; */
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2em;
   margin-bottom: 1em;
-  max-width: 24em;
   cursor: pointer;
 }
 
@@ -34,9 +41,8 @@ img {
 }
 
 .blog-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  width: 50em;
+  margin: auto;
 }
 /* Post.jsx styles */
 

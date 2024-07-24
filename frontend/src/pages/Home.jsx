@@ -35,9 +35,16 @@ export function Home() {
               className="link"
             >
               <div className="blog">
-                <img src="" alt="" />
-                <h2>{blog.title}</h2>
-                <p>{blog.content.substring(0, 100)}...</p>
+                <img
+                  src="https://i.pinimg.com/564x/fb/6a/38/fb6a3829931ef8642088e36c7bdd5a35.jpg"
+                  alt=""
+                />
+                <div className="blog-title--content">
+                  <h2 className="main-blog-title">{blog.title}</h2>
+                  <p className="main-blog-content">
+                    {blog.content.substring(0, 100)}...
+                  </p>
+                </div>
               </div>
             </Link>
           );
