@@ -39,6 +39,7 @@ export default function WriteBlog() {
             value={data.title}
             onChange={handleTitleChange}
             className="post-title"
+            required
           />
           <textarea
             name="blog_content"
@@ -48,6 +49,7 @@ export default function WriteBlog() {
             onChange={handleContentChange}
             rows={15}
             className="post-content"
+            required
           ></textarea>
           <input type="submit" value="Post" id="post" />
         </form>
