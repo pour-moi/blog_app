@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import PrivateRoute from "./PrivateRoutes";
+import { PrivateRoute } from "./PrivateRoutes";
 import { Home } from "../pages/Home";
 import { Blog } from "../pages/Blog";
 import WriteBlog from "../pages/Post";
@@ -7,8 +7,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Cookies from "js-cookie";
 
-const getAccessToken = () => {
-  return Cookies.get("accessToken");
+export const getAccessToken = (token) => {
+  return Cookies.set("accessToken", token);
 };
 
 const isAuthenticated = () => {
