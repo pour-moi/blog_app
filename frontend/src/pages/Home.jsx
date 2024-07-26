@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import "./style.css";
 
-export function Home() {
+export default function Home() {
   const [blogs, setBlogs] = useState([]);
+  const { state } = useLocation();
 
   useEffect(() => {
     axios
@@ -20,13 +21,11 @@ export function Home() {
 
   const handelLogout = (e) => {
     const token = Cookies.get("accessToken");
-    axios
-      .post("http://localhost:8000/blog/logout", { token: token })
-      .then((response) => {
-        console.log(response);
-        Cookies.remove("accessToken");
-        location.reload();
-      });
+    axios.post("http://localhost:8000/blog/logout").then((response) => {
+      console.log(response);
+      Cookies.remove("accessToken");
+      location.reload();
+    });
   };
 
   return (
