@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
 import axios from "axios";
+import Cookies from "js-cookie";
+import "./style.css";
 
 export default function Login() {
   const [user_data, setUserData] = useState({
@@ -24,7 +25,8 @@ export default function Login() {
       .post("http://localhost:8000/blog/login", user_data)
       .then((response) => {
         if (response.data.is_authenticated) {
-          navigate("/");
+          Cookies.set("accessToken", response.data.accessToken);
+          navigate("/home");
         } else navigate("/register");
       })
       .catch((error) => {

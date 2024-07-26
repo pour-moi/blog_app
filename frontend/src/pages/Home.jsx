@@ -21,7 +21,7 @@ export function Home() {
     <>
       <div className="header">
         <h1>Blog</h1>
-        <Link to="post">
+        <Link to="/post">
           <button className="write-blog">Write</button>
         </Link>
       </div>
@@ -30,7 +30,7 @@ export function Home() {
           return (
             <Link
               key={blog.id}
-              to={"blog"}
+              to={"/blog"}
               state={{ id: blog.id }}
               className="link"
             >
