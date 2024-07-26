@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
@@ -52,13 +53,14 @@ def login(request):
         print(user_name, user_password)
 
         user = authenticate(username=user_name, password=user_password)
-
+        
         if user is not None:
-            return Response({'is_authenticated': True})
-            print("Authenticated")
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
+            print(access_token)
+            return Response({'is_authenticated': True, 'accessToken': access_token})
         else:
-            print("Invalid Credentials")
-
+            return Response({'is_authenticated': False, 'message': 'Invalid credentials'})
 
         return Response({'message': 'Post requested'})
 
