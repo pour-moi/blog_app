@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 import "./style.css";
 
 export function Home() {
@@ -17,12 +18,28 @@ export function Home() {
       });
   }, []);
 
+  const handelLogout = (e) => {
+    const token = Cookies.get("accessToken");
+    axios
+      .post("http://localhost:8000/blog/logout", { token: token })
+      .then((response) => {
+        console.log(response);
+        Cookies.remove("accessToken");
+        location.reload();
+      });
+  };
+
   return (
     <>
       <div className="header">
         <h1>Blog</h1>
         <Link to="/post">
           <button className="write-blog">Write</button>
+        </Link>
+        <Link to="/login">
+          <button onClick={handelLogout} className="logout">
+            Logout
+          </button>
         </Link>
       </div>
       <div className="blog-container">

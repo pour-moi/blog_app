@@ -57,13 +57,18 @@ def login(request):
         if user is not None:
             refresh = RefreshToken.for_user(user)
             access_token = str(refresh.access_token)
-            print(access_token)
+
             return Response({'is_authenticated': True, 'accessToken': access_token})
         else:
             return Response({'is_authenticated': False, 'message': 'Invalid credentials'})
 
         return Response({'message': 'Post requested'})
 
+@api_view(['POST'])
+def logout(request):
+    if request.method == 'POST':
+        return Response({'message': 'userLoggedout'})
+    
 @api_view(['POST'])
 def register(request):
     if request.method == 'POST':
