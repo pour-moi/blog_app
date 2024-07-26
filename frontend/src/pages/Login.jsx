@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { getAccessToken } from "../utils/Router";
 import "./style.css";
 
 export default function Login() {
@@ -25,7 +26,7 @@ export default function Login() {
       .post("http://localhost:8000/blog/login", user_data)
       .then((response) => {
         if (response.data.is_authenticated) {
-          Cookies.set("accessToken", response.data.accessToken);
+          getAccessToken(response.data.accessToken);
           navigate("/home");
         } else navigate("/register");
       })
