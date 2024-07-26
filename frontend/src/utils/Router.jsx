@@ -9,9 +9,9 @@ import Cookies from "js-cookie";
 
 export const getAccessToken = (token) => {
   if (token != undefined) {
-    location.reload();
-    window.location.href = "/home";
     Cookies.set("accessToken", token);
+    location.reload();
+    window.location.href = "/";
   }
   return Cookies.get("accessToken");
 };
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     element: <PrivateRoute isAuthenticated={isAuthenticated()} />,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home />,
       },
       {

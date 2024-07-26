@@ -49,8 +49,6 @@ def login(request):
         user_data = request.data
         user_name = user_data["username"]
         user_password = user_data["password"]
-        print(dict(request.data))
-        print(user_name, user_password)
 
         user = authenticate(username=user_name, password=user_password)
         
@@ -58,7 +56,7 @@ def login(request):
             refresh = RefreshToken.for_user(user)
             access_token = str(refresh.access_token)
 
-            return Response({'is_authenticated': True, 'accessToken': access_token})
+            return Response({'is_authenticated': True, 'accessToken': access_token, 'user_name': user_name})
         else:
             return Response({'is_authenticated': False, 'message': 'Invalid credentials'})
 

@@ -28,7 +28,7 @@ export default function Login() {
         if (response.data.is_authenticated) {
           getAccessToken(response.data.accessToken);
           // Cookies.set("accessToken", response.data.accessToken);
-          navigate("/home", { state: { name: response.data.user_name } });
+          navigate("/", { state: { name: response.data.user_name } });
         } else navigate("/register");
       })
       .catch((error) => {
