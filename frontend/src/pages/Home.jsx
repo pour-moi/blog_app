@@ -33,14 +33,16 @@ export function Home() {
     <>
       <div className="header">
         <h1>Blog</h1>
-        <Link to="/post">
-          <button className="write-blog">Write</button>
-        </Link>
-        <Link to="/login">
-          <button onClick={handelLogout} className="logout">
-            Logout
-          </button>
-        </Link>
+        <div className="buttons">
+          <Link to="/post">
+            <button className="write-blog">Write</button>
+          </Link>
+          <Link to="/login">
+            <button onClick={handelLogout} className="logout-button">
+              Logout
+            </button>
+          </Link>
+        </div>
       </div>
       <div className="blog-container">
         {blogs.map((blog, index) => {
