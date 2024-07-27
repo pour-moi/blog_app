@@ -1,13 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./style.css";
 
 export default function WriteBlog() {
-  const [data, setData] = useState({ title: "", content: "" });
+  const [data, setData] = useState({ title: "", content: "", user_name: "" });
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+
     axios.post("http://127.0.0.1:8000/blog/post", data).catch((error) => {
       console.log(error);
     });
@@ -19,7 +20,11 @@ export default function WriteBlog() {
   };
 
   const handleContentChange = (e) => {
-    setData({ ...data, content: e.target.value });
+    setData({
+      ...data,
+      content: e.target.value,
+      user_name: localStorage.getItem("user_name"),
+    });
   };
 
   return (
