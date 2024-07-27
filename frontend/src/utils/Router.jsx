@@ -17,8 +17,8 @@ export const getAccessToken = (token) => {
 };
 
 const isAuthenticated = () => {
-  const token = Cookies.get();
-  console.log(token);
+  // const token = Cookies.get();
+  // console.log(token);
   return !!getAccessToken();
 };
 
@@ -27,6 +27,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
     index: true,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
   {
     element: <PrivateRoute isAuthenticated={isAuthenticated()} />,
@@ -42,10 +46,6 @@ const router = createBrowserRouter([
       {
         path: "post",
         element: <WriteBlog />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
       },
     ],
   },
