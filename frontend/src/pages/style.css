@@ -13,7 +13,24 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 30em;
+  gap: 10em;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.search-bar {
+  /* border-radius: 2em; */
+  border: none;
+  /* border: 0.01px black solid; */
+  padding: 0.5em;
+}
+
+.search-bar:focus {
+  outline: none;
 }
 
 .blog-title--content {

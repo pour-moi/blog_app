@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBlog } from "@fortawesome/free-solid-svg-icons";
+import { faBlog, faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Cookies from "js-cookie";
 import "./style.css";
@@ -36,6 +36,16 @@ export default function Home() {
           <FontAwesomeIcon icon={faBlog} />
         </h1>
         <div className="buttons">
+          <div className="search">
+            <input
+              type="search"
+              name="search-blog"
+              id=""
+              className="search-bar"
+              placeholder="Search"
+            />
+            <FontAwesomeIcon icon={faSearch} />
+          </div>
           <Link to="/post">
             <button className="write-blog">Write</button>
           </Link>
