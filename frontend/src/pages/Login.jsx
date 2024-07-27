@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 import "./style.css";
 import { getAccessToken } from "../utils/Router";
 
@@ -27,8 +26,8 @@ export default function Login() {
       .then((response) => {
         if (response.data.is_authenticated) {
           getAccessToken(response.data.accessToken);
-          // Cookies.set("accessToken", response.data.accessToken);
-          navigate("/", { state: { name: response.data.user_name } });
+          localStorage.setItem("user_name", user_data.username);
+          navigate("/");
         } else navigate("/register");
       })
       .catch((error) => {
