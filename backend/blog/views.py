@@ -15,7 +15,11 @@ def index(request):
         blog_data.append({
             'id': blog.id,
             'title': blog.title,
-            'content': blog.content
+            'content': blog.content,
+            'author': {
+                'id': blog.author.id,
+                'username': blog.author.username
+            }
         })
     return Response(blog_data)
 
@@ -37,8 +41,9 @@ def add(request):
 
        title = data['title']
        content = data['content']
+       author = data['user_name']
 
-       new_blog = Blog(title=title, content=content)
+       new_blog = Blog(title=title, content=content, author=User.objects.get(username=author))
        new_blog.save()
        
        return Response({'message': "Posted"})
