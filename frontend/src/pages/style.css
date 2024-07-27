@@ -53,6 +53,25 @@ img {
   width: 50em;
   margin: auto;
 }
+
+.display-user {
+  display: flex;
+  align-items: center;
+}
+
+.author-name {
+  color: gray;
+  font-size: 0.8em;
+}
+
+.user-image {
+  background-color: navajowhite;
+  border-radius: 50em;
+  border-style: none;
+  width: 1.5em;
+  height: 1.5em;
+}
+
 /* Post.jsx styles */
 
 .post-title,
