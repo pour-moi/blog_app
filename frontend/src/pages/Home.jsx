@@ -8,7 +8,6 @@ import "./style.css";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
-  const { state } = useLocation();
 
   useEffect(() => {
     axios
@@ -47,6 +46,9 @@ export default function Home() {
           </div>
           <Link to="/post">
             <button className="write-blog">Write</button>
+          </Link>
+          <Link to="/mypost">
+            <button className="my-blog-button">My Post</button>
           </Link>
           <button onClick={handleLogout} className="logout-button">
             Logout
@@ -123,7 +125,7 @@ export default function Home() {
       </div>
 
       <div className="remaining-boxes-container">
-        {blogs.slice(4, 10).map((blog) => (
+        {blogs.slice(4).map((blog) => (
           <Link
             key={blog.id}
             to={"/blog"}
