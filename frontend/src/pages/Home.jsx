@@ -21,11 +21,11 @@ export default function Home() {
       });
   }, []);
 
-  const handelLogout = (e) => {
+  const handleLogout = () => {
     const token = Cookies.get("accessToken");
-    axios.post("http://localhost:8000/blog/logout").then((response) => {
+    axios.post("http://localhost:8000/blog/logout").then(() => {
       Cookies.remove("accessToken");
-      location.reload();
+      window.location.reload();
     });
   };
 
@@ -40,7 +40,6 @@ export default function Home() {
             <input
               type="search"
               name="search-blog"
-              id=""
               className="search-bar"
               placeholder="Search"
             />
@@ -49,26 +48,25 @@ export default function Home() {
           <Link to="/post">
             <button className="write-blog">Write</button>
           </Link>
-          <Link to="/login">
-            <button onClick={handelLogout} className="logout-button">
-              Logout
-            </button>
-          </Link>
+          <button onClick={handleLogout} className="logout-button">
+            Logout
+          </button>
         </div>
       </div>
       <div className="blog-container">
-        {blogs.map((blog, index) => {
-          return (
+        <div className="first-blog-container">
+          {blogs.slice(0, 1).map((blog) => (
             <Link
               key={blog.id}
               to={"/blog"}
               state={{ id: blog.id }}
               className="link"
             >
-              <div className="blog">
+              <div className="first-blog">
                 <img
                   src="https://i.pinimg.com/564x/fb/6a/38/fb6a3829931ef8642088e36c7bdd5a35.jpg"
                   alt=""
+                  className="home-page-image first-image"
                 />
                 <div className="blog-title--content">
                   <h2 className="main-blog-title">{blog.title}</h2>
@@ -86,9 +84,77 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-          );
-        })}
-        {/* <button>Post</button> */}
+          ))}
+        </div>
+        <div className="small-boxes-container">
+          {blogs.slice(1, 4).map((blog) => (
+            <Link
+              key={blog.id}
+              to={"/blog"}
+              state={{ id: blog.id }}
+              className="link"
+            >
+              <div className="ss-blog-container">
+                <div className="blog">
+                  <img
+                    src="https://i.pinimg.com/564x/fb/6a/38/fb6a3829931ef8642088e36c7bdd5a35.jpg"
+                    alt=""
+                    className="home-page-image"
+                  />
+                  <div className="blog-title--content">
+                    <h2 className="main-blog-title">{blog.title}</h2>
+                    <p className="main-blog-content">
+                      {blog.content.substring(0, 100)}...
+                    </p>
+                    <div className="display-user">
+                      <img
+                        src="https://as2.ftcdn.net/v2/jpg/02/29/75/83/1000_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+                        alt=""
+                        className="user-image"
+                      />
+                      <p className="author-name">{blog.author.username}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="remaining-boxes-container">
+        {blogs.slice(4, 10).map((blog) => (
+          <Link
+            key={blog.id}
+            to={"/blog"}
+            state={{ id: blog.id }}
+            className="link"
+          >
+            <div className="remaining-blog-container">
+              <div className="other-blogs">
+                <img
+                  src="https://i.pinimg.com/564x/fb/6a/38/fb6a3829931ef8642088e36c7bdd5a35.jpg"
+                  alt=""
+                  className="home-page-image others-image"
+                />
+                <div className="blog-title--content">
+                  <h2 className="main-blog-title">{blog.title}</h2>
+                  <p className="main-blog-content">
+                    {blog.content.substring(0, 100)}...
+                  </p>
+                  <div className="display-user">
+                    <img
+                      src="https://as2.ftcdn.net/v2/jpg/02/29/75/83/1000_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+                      alt=""
+                      className="user-image"
+                    />
+                    <p className="author-name">{blog.author.username}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </>
   );

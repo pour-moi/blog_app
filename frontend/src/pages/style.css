@@ -22,11 +22,21 @@ body {
   gap: 0.5em;
 }
 
+.first-image {
+  height: 20em;
+  width: 25em;
+}
+
 .search-bar {
   /* border-radius: 2em; */
   border: none;
   /* border: 0.01px black solid; */
+  font-family: "GT Walesheim";
   padding: 0.5em;
+}
+
+.home-page-image {
+  object-fit: cover;
 }
 
 .search-bar:focus {
@@ -34,31 +44,76 @@ body {
 }
 
 .blog-title--content {
-  width: 100%;
+  margin-left: 3%;
 }
 
 .main-blog-title,
 .main-blog-content {
-  min-width: 96%;
-  max-width: 96%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.1em;
 }
 
 img {
-  height: 16%;
-  width: 24%;
+  height: auto;
+  width: 13em;
+  /* border-radius: 0.5em; */
 }
 
 .blog {
-  display: flex;
+  /* display: flex;
   flex-direction: row-reverse;
   align-items: center;
   gap: 2em;
   margin-bottom: 4em;
-  cursor: pointer;
   box-shadow: 0px 1px 1px rgba(3, 7, 18, 0.01), 0px 5px 4px rgba(3, 7, 18, 0.02),
     0px 12px 9px rgba(3, 7, 18, 0.02), 0px 20px 15px rgba(3, 7, 18, 0.03),
     0px 32px 24px rgba(3, 7, 18, 0.04);
-  padding: 0.5em;
+  padding: 0.5em; */
+  /* border: 1px red solid;
+  display: flex;
+  /* flex-direction: column; */
+  /* gap: 0.5em;
+  width: 50%;  */
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.small-boxes-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  align-items: start;
+  /* border: 1px solid red; */
+  /* flex: 1; Take up the remaining space */
+  gap: 1.5em;
+}
+/* 
+.small-boxes-container img:not(.user-image) {
+  display: none;
+} */
+
+.small-boxes-container h2 {
+  font-size: 1em;
+}
+
+.small-boxes-container p {
+  font-size: 0.9em;
+}
+
+.first-blog {
+  width: 100%;
+  height: fit-content; /* Adjust height as needed */
+  /* border: 1px greenyellow solid; */
+}
+
+.ss-blog-container {
+  /* border: 1px greenyellow solid; */
+  width: 30em;
+  /* display: flex; */
 }
 
 .link {
@@ -67,8 +122,21 @@ img {
 }
 
 .blog-container {
-  width: 50em;
+  display: flex;
+  justify-content: center;
+  gap: 17em;
+  width: fit-content;
+  height: fit-content;
   margin: auto;
+  margin-left: 24.8em;
+  margin-top: 1em;
+}
+.first-blog-container {
+  /* flex: 0 0 20em; Fixed width for the first blog container */
+  display: flex;
+  width: 0em;
+  /* align-items: center; */
+  justify-content: center;
 }
 
 .display-user {
@@ -82,11 +150,31 @@ img {
 }
 
 .user-image {
-  background-color: navajowhite;
   border-radius: 50em;
   border-style: none;
   width: 1.5em;
   height: 1.5em;
+}
+
+.remaining-boxes-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 3.3em;
+  margin-top: 2em;
+}
+
+.remaining-blog-container {
+  padding-bottom: 1em;
+}
+
+.others-image {
+  width: 16em;
+  height: 8em;
+}
+
+.other-blogs {
+  width: 21em;
 }
 
 /* Post.jsx styles */
