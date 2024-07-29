@@ -83,3 +83,11 @@ def register(request):
         new_user.save()
 
         return Response({'message': 'User Created'})
+
+@api_view(['DELETE'])
+def delete(request, id):
+    if request.method == 'DELETE':
+        blog = Blog.objects.get(pk=id)
+        blog.delete()
+
+        return Response({'message': 'blog_deleted'})
