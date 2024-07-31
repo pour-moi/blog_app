@@ -7,12 +7,15 @@ import Cookies from "js-cookie";
 import "./style.css";
 
 export default function Home() {
+  const baseURL = "http://127.0.0.1:8000/blog";
+
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:8000/blog/")
       .then((response) => {
+        console.log(response.data);
         setBlogs(response.data);
       })
       .catch((error) => {
@@ -135,7 +138,7 @@ export default function Home() {
             <div className="remaining-blog-container">
               <div className="other-blogs">
                 <img
-                  src="https://i.pinimg.com/564x/fb/6a/38/fb6a3829931ef8642088e36c7bdd5a35.jpg"
+                  src={`${baseURL}${blog.image}`}
                   alt=""
                   className="home-page-image others-image"
                 />

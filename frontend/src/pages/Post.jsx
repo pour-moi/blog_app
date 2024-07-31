@@ -4,15 +4,34 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./style.css";
 
 export default function WriteBlog() {
-  const [data, setData] = useState({ title: "", content: "", user_name: "" });
+  const [data, setData] = useState({
+    title: "",
+    content: "",
+    image: "",
+    user_name: "",
+  });
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://127.0.0.1:8000/blog/post", data).catch((error) => {
-      console.log(error);
-    });
-    navigate("/");
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("content", data.content);
+    formData.append("user_name", localStorage.getItem("user_name"));
+    if (data.image) formData.append("image", data.image);
+
+    axios
+      .post("http://127.0.0.1:8000/blog/post", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleTitleChange = (e) => {
@@ -27,6 +46,12 @@ export default function WriteBlog() {
     });
   };
 
+  const handleImageChange = (e) => {
+    setData({
+      ...data,
+      image: e.target.files[0],
+    });
+  };
   return (
     <>
       <div className="head">
@@ -56,7 +81,17 @@ export default function WriteBlog() {
             className="post-content"
             required
           ></textarea>
-          <input type="submit" value="Post" id="post" />
+          <div className="image-input">
+            <label htmlFor="image">Image: </label>
+            <input
+              type="file"
+              name=""
+              id="Image"
+              onChange={handleImageChange}
+              className="input-image"
+            />
+            <input type="submit" value="Post" id="post" />
+          </div>
         </form>
       </div>
     </>
