@@ -37,8 +37,12 @@ export default function MyPost() {
     });
   };
 
+  const handleChange = (e) => {
+    // e.preventDefault();
+    // document.body.contentEditable = "true";
+  };
+
   useEffect(() => {
-    // Filter blogs based on user_name once data is fetched
     const user_name = localStorage.getItem("user_name");
     if (user_name) {
       const filteredBlogs = data.filter(
@@ -46,7 +50,7 @@ export default function MyPost() {
       );
       setBlogs(filteredBlogs);
     }
-  }, [data]); // This effect runs when 'data' is updated
+  }, [data]);
   return (
     <>
       <h1>My Posts</h1>
@@ -88,7 +92,11 @@ export default function MyPost() {
                 variant="contained"
                 aria-label="Disabled button group"
               >
-                <Button color="primary">Update</Button>
+                <Link to={`/update-blog`} state={{ id: blog.id }}>
+                  <Button onClick={handleChange} color="primary">
+                    Update
+                  </Button>
+                </Link>
                 <Button onClick={(e) => handleDelete(e, blog.id)} color="error">
                   Delete
                 </Button>
