@@ -37,9 +37,7 @@ body {
 }
 
 .search-bar {
-  /* border-radius: 2em; */
   border: none;
-  /* border: 0.01px black solid; */
   font-family: "GT Walesheim";
   padding: 0.5em;
 }
@@ -230,6 +228,10 @@ img {
   width: 4em;
   color: white;
   border-radius: 2em;
+}
+
+.image-input {
+  margin-left: 16em;
 }
 
 /* Blog.jsx styles */
