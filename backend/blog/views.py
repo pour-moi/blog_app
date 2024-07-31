@@ -91,3 +91,14 @@ def delete(request, id):
         blog.delete()
 
         return Response({'message': 'blog_deleted'})
+@api_view(['PUT'])
+def update(request, id):
+    if request.method == 'PUT':
+        blog = Blog.objects.get(pk=id)
+        updated_data = request.data
+        blog.title = updated_data["title"]
+        blog.content = updated_data["content"]
+        
+        blog.save()
+
+        return Response({'message': 'Blog_Updated'})
