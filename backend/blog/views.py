@@ -19,7 +19,8 @@ def index(request):
             'author': {
                 'id': blog.author.id,
                 'username': blog.author.username
-            }
+            },
+            'image': blog.image.url if blog.image else None
         })
     return Response(blog_data)
 
@@ -42,8 +43,9 @@ def add(request):
        title = data['title']
        content = data['content']
        author = data['user_name']
+       image = request.FILES.get('image')
 
-       new_blog = Blog(title=title, content=content, author=User.objects.get(username=author))
+       new_blog = Blog(title=title, content=content, author=User.objects.get(username=author), image=image)
        new_blog.save()
        
        return Response({'message': "Posted"})

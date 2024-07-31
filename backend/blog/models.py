@@ -7,6 +7,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=2000000)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blogs")
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self) -> str:
         return f"{self.title}: {self.content}"
