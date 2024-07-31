@@ -6,6 +6,7 @@ import WriteBlog from "../pages/Post";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import MyPost from "../pages/UserPost";
+import UpdateBlog from "../pages/UpdateBlog";
 import Cookies from "js-cookie";
 
 export const getAccessToken = (token) => {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "mypost",
         element: <MyPost />,
+      },
+      {
+        path: "update-blog",
+        element: <UpdateBlog />,
       },
     ],
   },
