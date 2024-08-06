@@ -17,11 +17,13 @@ import "./style.css";
 export default function MyPost() {
   const [data, setData] = useState([]);
   const [blogs, setBlogs] = useState([]);
+  const baseURL = "http://127.0.0.1:8000/blog";
 
   useEffect(() => {
     axios
       .get("http://localhost:8000/blog/")
       .then((response) => {
+        // console.log(response);
         setData(response.data);
       })
       .catch((error) => {
@@ -35,11 +37,6 @@ export default function MyPost() {
       console.log(response.data);
       location.reload();
     });
-  };
-
-  const handleChange = (e) => {
-    // e.preventDefault();
-    // document.body.contentEditable = "true";
   };
 
   useEffect(() => {
@@ -72,7 +69,7 @@ export default function MyPost() {
                     className="home-page-image"
                     component="img"
                     height="140" // Adjust height as needed
-                    image="https://i.pinimg.com/564x/fb/6a/38/fb6a3829931ef8642088e36c7bdd5a35.jpg"
+                    image={`${baseURL}${blog.image}`}
                     alt={blog.title} // Use blog title or a descriptive text
                   />
                   <CardContent>
@@ -93,9 +90,7 @@ export default function MyPost() {
                 aria-label="Disabled button group"
               >
                 <Link to={`/update-blog`} state={{ id: blog.id }}>
-                  <Button onClick={handleChange} color="primary">
-                    Update
-                  </Button>
+                  <Button color="primary">Update</Button>
                 </Link>
                 <Button onClick={(e) => handleDelete(e, blog.id)} color="error">
                   Delete
